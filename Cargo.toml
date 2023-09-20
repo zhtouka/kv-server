@@ -1,0 +1,56 @@
+[package]
+name = "kvserver"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "server"
+path = "./src/server.rs"
+
+[[bin]]
+name = "client"
+path = "./src/client.rs"
+
+[[bin]]
+name = "cli"
+path = "./src/cli.rs"
+
+[dependencies]
+async-trait = "0.1"
+bytes = "1"
+config = "0.13"
+dashmap = "5"
+futures = "0.3"
+flate2 = "1"
+http = "0.2"
+lazy_static = "1"
+prost = "0.11"
+serde = { version = "1", features = ['derive'] }
+sled = "0.34"
+thiserror = "1"
+tracing = { version = "0.1", features = ['log'] }
+tracing-subscriber = "0.3"
+tokio = { version = "1", features = ['macros', 'rt-multi-thread', 'io-util', 'net'] }
+tokio-stream = "0.1"
+tokio-util = { version = "0.7", features = ['compat']}
+yamux = "^0.10"
+clap = { version = "4", features = ["derive"] }
+rustyline = "11"
+
+[build-dependencies]
+prost-build = "0.11"
+
+[dev-dependencies]
+anyhow = "1"
+criterion = { version = "0.4", features = ['async_futures', 'async_tokio', 'html_reports'] }
+rand = "0.8"
+tempfile = "3"
+tokio = { version = "1", features = ['fs'] }
+tokio-util = { version = "0.7", features = ['codec'] }
+rustyline = { version = "11" }
+
+
+[[bench]]
+name = "pubsub"
+harness = false

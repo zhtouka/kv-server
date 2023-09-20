@@ -1,0 +1,6 @@
+
+server:
+  port: 9909
+  store:
+    name: sleddb
+    path: /tmp/kv
